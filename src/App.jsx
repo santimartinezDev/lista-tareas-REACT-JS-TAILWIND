@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import './App.css'
 
 export default function App() {
   const [tarea, setTarea] = useState("");
@@ -31,25 +30,25 @@ export default function App() {
 
 
   let cambioEstadoVerde = () => {
-    const nuevaTarea = document.getElementById('nuevaTarea');
+    let nuevaTarea = document.getElementById('nuevaTarea');
     nuevaTarea.className = `w-full h-fit flex bg-green-200 rounded-md hover:scale-102 transition-all shadow-lg shadow-aqua-200
         p-2 m-5 text-black font-semibold place-content-center items-center justify-between text-green-800`
   }
   let cambioEstadoGris = () => {
-    const nuevaTarea = document.getElementById('nuevaTarea');
+    let nuevaTarea = document.getElementById('nuevaTarea');
     nuevaTarea.className = `w-full h-fit flex bg-gray-300 rounded-md hover:scale-102 transition-all
         p-2 m-5 text-black font-semibold place-content-center items-center justify-between shadow-lg shadow-gray-200`
   }
-  const eliminarTarea = () => {
-    const nuevaTarea = document.getElementById('nuevaTarea');
+  let eliminarTarea = () => {
+    let nuevaTarea = document.getElementById('nuevaTarea');
     setContador(contador => contador - 1)
     nuevaTarea.remove()
   }
 
   // Añadir tarea
-  const addTarea = () => {
-    const inputTarea = document.getElementById('inputTarea').value.toUpperCase()
-    const inputDescripcion = document.getElementById('descripcion').value
+  let addTarea = () => {
+    let inputTarea = document.getElementById('inputTarea').value.toUpperCase()
+    let inputDescripcion = document.getElementById('descripcion').value
 
     if (contador < 5 && inputTarea != "") {
       mensajeTareaCheck(true)
@@ -85,13 +84,6 @@ export default function App() {
 
   }
 
-  const ultimasSingularOPlural = () => {
-    return contador == 1 ? 'Última' : 'Últimas'
-  }
-  const ultimasTareas = () => {
-    return contador ? `👇 ${ultimasSingularOPlural()} ${contador} tareas 👇` : ''
-  }
-
   const verTareas = () => {
     const panel = document.getElementById('panelAddTarea')
     const misTareas = document.getElementById('misTareas')
@@ -101,8 +93,8 @@ export default function App() {
     panel.className = 'hidden'
     misTareas.className = `w-full h-fit p-5 rounded-md shadow-lg
       text-white bg-blue-500 place-content-center text-5xl
-      place-items-center transition-all`
-    tareas.className = 'block place-items-center'
+      place-items-center transition-all text-center`
+    tareas.className = 'block place-items-center w-300 mx-auto'
     boton.className = `block bg-white p-2 rounded-md size-22 cursor-pointer
           text-blue-500 font-bold 3xl border-2 border-blue-500`
   }
@@ -112,23 +104,21 @@ export default function App() {
     const tareas = document.getElementById('tareas')
     const boton = document.getElementById('volver')
 
-    panel.className = `block h-full flex flex-col gap-5 w-350
+    panel.className = `block h-full flex flex-col gap-5 w-300
     p-5 rounded-md shadow-lg shadow-gray-300 bg-white place-content-center`
     misTareas.className = `w-1/3 h-full p-2 rounded-md shadow-lg text-white
                 bg-blue-500 place-content-center place-items-center text-5xl
-                hover:bg-white cursor-pointer hover:text-blue-500`
+                hover:bg-white cursor-pointer hover:text-blue-500 text-center`
     tareas.className = 'hidden place-items-center'
     boton.className = `hidden bg-white p-2 rounded-md size-22 cursor-pointer
           text-blue-500 font-bold 3xl border-2 border-blue-500`
   }
 
-
-
   return (
     <>
       <div>{mensajeCheck}</div>
 
-      <div className='h-50 gap-5 flex w-300 justify-around
+      <div className='h-50 gap-5 flex w-300 justify-around mx-auto
       '>
         <button
           id='volver'
@@ -139,7 +129,7 @@ export default function App() {
           id='misTareas'
           className='w-1/3 h-full p-2 rounded-md shadow-lg text-white
                 bg-blue-500 place-content-center place-items-center text-5xl
-                hover:bg-white cursor-pointer hover:text-blue-500'
+                hover:bg-white cursor-pointer hover:text-blue-500 text-center'
           onClick={verTareas}
 
         >Mis tareas
@@ -171,10 +161,9 @@ export default function App() {
         </article>
 
       </div>
-      <p className='hidden m-10 text-black font-semibold'>{ultimasTareas()}</p>
       <div
         id='tareas'
-        className='hidden place-items-center'>{tarea}</div>
+        className='hidden place-items-center w-fit'>{tarea}</div>
     </>
   )
 }
