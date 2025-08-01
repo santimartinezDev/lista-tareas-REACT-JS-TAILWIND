@@ -5,14 +5,14 @@ export default function App() {
   const [tarea, setTarea] = useState("");
   const [contador, setContador] = useState(0);
   const [mensajeCheck, setMensajeCheck] = useState("");
-  const [lista, setLista] = useState()
 
 
   // Mensaje de tarea añadida
   const mensajeTareaCheck = (bool) => {
     function mensaje(color, texto) {
       return (
-        <div className={`absolute top-30 bg-${color}-600 rounded-md w-300 p-2 h-fit text-xl mb-5 flex place-items-center justify-center`} >
+        <div className={`absolute top-30 bg-${color}-600 rounded-md w-300 p-2 h-fit text-xl
+        mb-5 flex place-items-center justify-center `} >
           <p>
             {texto}
           </p>
@@ -32,13 +32,13 @@ export default function App() {
 
   let cambioEstadoVerde = () => {
     const nuevaTarea = document.getElementById('nuevaTarea');
-    nuevaTarea.className = `w-full h-fit flex bg-green-200 rounded-md
-        p-2 m-5 text-black font-semibold place-content-center items-center justify-between`
+    nuevaTarea.className = `w-full h-fit flex bg-green-200 rounded-md hover:scale-102 transition-all shadow-lg shadow-aqua-200
+        p-2 m-5 text-black font-semibold place-content-center items-center justify-between text-green-800`
   }
   let cambioEstadoGris = () => {
     const nuevaTarea = document.getElementById('nuevaTarea');
-    nuevaTarea.className = `w-full h-fit flex bg-gray-300 rounded-md
-        p-2 m-5 text-black font-semibold place-content-center items-center justify-between`
+    nuevaTarea.className = `w-full h-fit flex bg-gray-300 rounded-md hover:scale-102 transition-all
+        p-2 m-5 text-black font-semibold place-content-center items-center justify-between shadow-lg shadow-gray-200`
   }
   const eliminarTarea = () => {
     const nuevaTarea = document.getElementById('nuevaTarea');
@@ -46,36 +46,80 @@ export default function App() {
     nuevaTarea.remove()
   }
 
-
   // Añadir tarea
   const addTarea = () => {
-    const inputTarea = document.getElementById('inputTarea').value
+    const inputTarea = document.getElementById('inputTarea').value.toUpperCase()
+    const inputDescripcion = document.getElementById('descripcion').value
 
     if (contador < 5 && inputTarea != "") {
       mensajeTareaCheck(true)
       setContador(contador => contador + 1)
 
-      setTarea(() => [...tarea,
-      <div id="nuevaTarea" className='w-full h-fit flex bg-white rounded-md
-        p-2 m-5 text-black font-semibold place-content-center items-center justify-between'>
-        <section className='ml-40 flex gap-5 text-left'>
-          <h2>{inputTarea}</h2>
-        </section>
-        <aside className='flex gap-2 m-5'>
-          <button onClick={(e) => cambioEstadoVerde(e)} className='p-2 size-5 bg-green-400 text-white rounded-md'></button>
-          <button onClick={(e) => cambioEstadoGris(e)} className='p-2 size-5 bg-gray-400 text-white rounded-md'></button>
-          <button onClick={(e) => eliminarTarea(e)} className='p-2 size-5 bg-red-400 text-white rounded-md'></button>
-        </aside>
-      </div>
+      setTarea(() => [tarea,
+        <div id="nuevaTarea" className='w-full h-fit flex bg-white rounded-md
+        p-2 m-5 text-black place-content-center items-center justify-between
+        hover:scale-102 transition-all shadow-lg shadow-gray-300'>
+          <section className='ml-40 grid gap-5 text-left p-2'>
+            <h2
+              className='cursor-pointer font-semibold'
+
+            >{inputTarea}</h2>
+            <p>Descripción: {inputDescripcion}</p>
+          </section>
+          <aside className='flex gap-2 m-5'>
+            <button onClick={(e) => cambioEstadoVerde(e)}
+              className='text-xs size-7 bg-green-400 text-white rounded-md cursor-pointer'></button>
+            <button onClick={(e) => cambioEstadoGris(e)}
+              className='text-xs size-7 bg-gray-400 text-white rounded-md cursor-pointer'></button>
+            <button onClick={(e) => eliminarTarea(e)}
+              className='text-xs size-7 bg-red-400 text-white rounded-md cursor-pointer'></button>
+          </aside>
+        </div>
       ])
 
     } else if (contador == 5) { mensajeTareaCheck(false) }
     else if (inputTarea == "") { alert('No se permite añadir tarea vacía') }
 
+    document.getElementById('inputTarea').value = '';
+    document.getElementById('descripcion').value = ''
+
   }
 
-  const ntareas = () => {
-    return (contador == 1 ? 'tarea' : 'tareas')
+  const ultimasSingularOPlural = () => {
+    return contador == 1 ? 'Última' : 'Últimas'
+  }
+  const ultimasTareas = () => {
+    return contador ? `👇 ${ultimasSingularOPlural()} ${contador} tareas 👇` : ''
+  }
+
+  const verTareas = () => {
+    const panel = document.getElementById('panelAddTarea')
+    const misTareas = document.getElementById('misTareas')
+    const tareas = document.getElementById('tareas')
+    const boton = document.getElementById('volver')
+
+    panel.className = 'hidden'
+    misTareas.className = `w-full h-fit p-5 rounded-md shadow-lg
+      text-white bg-blue-500 place-content-center text-5xl
+      place-items-center transition-all`
+    tareas.className = 'block place-items-center'
+    boton.className = `block bg-white p-2 rounded-md size-22 cursor-pointer
+          text-blue-500 font-bold 3xl border-2 border-blue-500`
+  }
+  const volverInicio = () => {
+    const panel = document.getElementById('panelAddTarea')
+    const misTareas = document.getElementById('misTareas')
+    const tareas = document.getElementById('tareas')
+    const boton = document.getElementById('volver')
+
+    panel.className = `block h-full flex flex-col gap-5 w-350
+    p-5 rounded-md shadow-lg shadow-gray-300 bg-white place-content-center`
+    misTareas.className = `w-1/3 h-full p-2 rounded-md shadow-lg text-white
+                bg-blue-500 place-content-center place-items-center text-5xl
+                hover:bg-white cursor-pointer hover:text-blue-500`
+    tareas.className = 'hidden place-items-center'
+    boton.className = `hidden bg-white p-2 rounded-md size-22 cursor-pointer
+          text-blue-500 font-bold 3xl border-2 border-blue-500`
   }
 
 
@@ -84,34 +128,53 @@ export default function App() {
     <>
       <div>{mensajeCheck}</div>
 
-      <div className='h-50 grid gap-5 grid-cols-1 sm:flex w-300 justify-around'>
-
-        <article className='w-1/3 h-full p-2 rounded-md shadow-lg text-white
+      <div className='h-50 gap-5 flex w-300 justify-around
+      '>
+        <button
+          id='volver'
+          className={`hidden bg-white p-2 rounded-md size-22 cursor-pointer
+          text-blue-500 font-bold 3xl border-2 border-blue-500`}
+          onClick={volverInicio}>Volver</button>
+        <a
+          id='misTareas'
+          className='w-1/3 h-full p-2 rounded-md shadow-lg text-white
                 bg-blue-500 place-content-center place-items-center text-5xl
                 hover:bg-white cursor-pointer hover:text-blue-500'
-        > Tienes {contador} {ntareas()}
-        </article>
+          onClick={verTareas}
 
-        <article className='w-350 h-full p-2 rounded-md shadow-lg
+        >Mis tareas
+        </a>
+
+        <article
+          id='panelAddTarea'
+          className='h-full flex flex-col gap-5 w-350 p-5 rounded-md shadow-lg shadow-gray-300
                 bg-white place-content-center'>
-          <h1 className='text-black m-5 font-semibold text-4xl'>Añadir tarea</h1>
-          <section id="prioridades" className='max-w-full flex justify-between m-5 gap-5'>
 
-            <input id="inputTarea" type="text" className='border-black text-black
-            border-1 rounded-md p-2 w-full'/>
+          <section id="prioridades" className='w-full flex justify-between gap-5'>
 
-            <button className='bg-blue-600 text-white
-            rounded-md p-2 text-lg font-semibold
-            hover:scale-105 transition-transform
-            hover:bg-white hover:text-blue-800
-            hover:border-1 hover:border-blue-800
-            cursor-pointer'
+            <input id="inputTarea"
+              type="text"
+              className='border-black text-black
+            border-1 rounded-md p-2 w-full'
+              placeholder='Nombre de la tarea' />
+
+            <button className='bg-blue-600 text-white rounded-md p-2 text-lg font-semibold
+            hover:scale-105 transition-transform hover:bg-white hover:text-blue-800
+            hover:border-1 hover:border-blue-800 cursor-pointer'
               onClick={addTarea}>Añadir</button>
           </section>
+
+          <input id='descripcion'
+            className='h-30 w-full border-1 border-black text-black rounded-md
+          p-2'
+            placeholder='Descripción' />
         </article>
 
       </div>
-      <div className='place-items-center'>{tarea}</div>
+      <p className='hidden m-10 text-black font-semibold'>{ultimasTareas()}</p>
+      <div
+        id='tareas'
+        className='hidden place-items-center'>{tarea}</div>
     </>
   )
 }
