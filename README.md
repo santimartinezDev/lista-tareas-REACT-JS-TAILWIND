@@ -1,12 +1,37 @@
-# React + Vite
+# 📝 Gestor de Tareas Simple  
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Una aplicación web minimalista para gestionar tus tareas diarias.  
 
-Currently, two official plugins are available:
+## ✨ Características  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Añadir tareas** con descripción  
+- **Gestión de estado**:  
+  - ✅ Realizadas  
+  - ⏳ Pendientes  
+  - 🗑️ Eliminadas  
+- **Sección "Mis Tareas"** para ver y organizar  
 
-## Expanding the ESLint configuration
+## 🚀 Futuras Mejoras  
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- 📅 **Fecha y hora** para cada tarea  
+- 🔄 **Ordenar por**:  
+  - Fecha  
+  - Prioridad  
+  - Estado  
+- 🏷️ Categorías/etiquetas  
+- 🔍 Búsqueda y filtrado  
+
+## 🛠️ Tecnologías  
+
+- HTML5
+- Tailwindcss
+- Javascript
+
+## 📌 Uso Básico  
+
+1. Escribe tu tarea y añádela  
+2. Entra en *"Mis Tareas"* para gestionarlas  
+3. Marca como completada o elimina  
+
+---  
+*¡Simple y útil!*  
