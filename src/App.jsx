@@ -5,7 +5,6 @@ export default function App() {
   const [contador, setContador] = useState(0);
   const [mensajeCheck, setMensajeCheck] = useState("");
 
-
   // Mensaje de tarea añadida
   const mensajeTareaCheck = (bool) => {
     function mensaje(color, texto) {
@@ -27,7 +26,6 @@ export default function App() {
 
     setTimeout(() => { setMensajeCheck().remove() }, 2000)
   }
-
 
   let cambioEstadoVerde = () => {
     let nuevaTarea = document.getElementById('nuevaTarea');
