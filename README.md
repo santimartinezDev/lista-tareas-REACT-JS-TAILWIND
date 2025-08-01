@@ -1,48 +1,38 @@
-📝 Gestor de Tareas Simple
-Una aplicación web minimalista para gestionar tus tareas diarias. Crea, organiza y marca tus tareas como completadas con facilidad.
 
-✨ Características principales
-Añadir nuevas tareas con descripción
+# 📝 Gestor de Tareas Simple  
 
-Marcar tareas como:
+Una aplicación web minimalista para gestionar tus tareas diarias.  
 
-✅ Realizadas
+## ✨ Características  
 
-⏳ Pendientes
+- **Añadir tareas** con descripción  
+- **Gestión de estado**:  
+  - ✅ Realizadas  
+  - ⏳ Pendientes  
+  - 🗑️ Eliminadas  
+- **Sección "Mis Tareas"** para ver y organizar  
 
-🗑️ Eliminadas
+## 🚀 Futuras Mejoras  
 
-Sección "Mis Tareas" para gestionar tu lista
+- 📅 **Fecha y hora** para cada tarea  
+- 🔄 **Ordenar por**:  
+  - Fecha  
+  - Prioridad  
+  - Estado  
+- 🏷️ Categorías/etiquetas  
+- 🔍 Búsqueda y filtrado  
 
-Interfaz simple e intuitiva
+## 🛠️ Tecnologías  
+- HTML5
+- Javascript
+- Tailwind  
+ 
 
-🚀 Futuras mejoras (Roadmap)
-🕒 Añadir hora y fecha a las tareas
+## 📌 Uso Básico  
 
-🔄 Ordenar tareas por:
+1. Escribe tu tarea y añádela  
+2. Entra en *"Mis Tareas"* para gestionarlas  
+3. Marca como completada o elimina  
 
-Fecha de creación
-
-Prioridad
-
-Estado (completadas/pendientes)
-
-📂 Categorías/etiquetas para tareas
-
-🔍 Sistema de búsqueda/filtrado
-
-📱 Diseño responsive mejorado
-
-🛠️ Tecnologías utilizadas
-Frontend: HTML, Tailwindcss, JavaScript
-
-Almacenamiento: LocalStorage (persistencia local)
-
-📌 Cómo usar
-Añade nuevas tareas en el campo principal
-
-Ve a "Mis Tareas" para gestionar tu lista
-
-Marca tareas como completadas cuando las termines
-
-Elimina tareas que ya no necesites
+---  
+*¡Simple y útil!*  
